@@ -1,4 +1,4 @@
-import { Router, Request, Response } from "express"
+import { Router, Request, Response, NextFunction } from "express"
 import { IUser, UserModel } from "../models/user"
 import { UserErrors } from "../errors"
 import bcrypt from "bcrypt";
@@ -49,5 +49,21 @@ router.post("/login", async (req: Request, res: Response) => {
 
     }
 })
+
+export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
+    const authHeader = req.headers.authorization
+
+    if (authHeader) {
+        jwt.verify(authHeader, "secret", (error) => {
+            if (error) {
+                return res.sendStatus(403)
+            }
+
+            next()
+        })
+    }
+
+    res.sendStatus(401)
+}
 
 export { router as userRouter }
