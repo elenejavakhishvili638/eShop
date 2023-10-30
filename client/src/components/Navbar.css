@@ -1,0 +1,20 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #555843;
+  background-color: #fcf5ed;
+  padding: 1rem;
+  /* position: fixed; */
+  width: 100%;
+}
+
+.navbar-list {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+
+svg {
+  color: #555843;
+}

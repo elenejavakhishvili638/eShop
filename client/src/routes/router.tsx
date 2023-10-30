@@ -5,6 +5,9 @@ import {
 } from "react-router-dom";
 import Home from "../pages/Home"
 import Layout from '../components/Layout';
+import Auth from '../pages/Auth';
+import Checkout from '../pages/Checkout';
+import PurchasedItems from '../pages/PurchasedItems';
 
 
 
@@ -24,25 +27,25 @@ const router = createBrowserRouter([
     {
         path: "/auth",
         element: (
-            // <Layout>
-            <Home />
-            // </Layout>
+            <Layout>
+                <Auth />
+            </Layout>
         ),
     },
     {
         path: "/checkout",
         element: (
-            // <Layout>
-            <Home />
-            // </Layout>
+            <Layout>
+                <Checkout />
+            </Layout>
         ),
     },
     {
         path: "/purchased-items",
         element: (
-            // <Layout>
-            <Home />
-            // </Layout>
+            <Layout>
+                <PurchasedItems />
+            </Layout>
         ),
     },
     {
