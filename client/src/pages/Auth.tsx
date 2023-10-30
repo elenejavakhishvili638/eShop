@@ -1,8 +1,13 @@
-
+// import Login from "../components/Login"
+import Register from "../components/Register"
+import "./Auth.css"
 
 const Auth = () => {
     return (
-        <div>Auth</div>
+        <div className="auth-main">
+            <Register />
+            {/* <Login /> */}
+        </div>
     )
 }
 

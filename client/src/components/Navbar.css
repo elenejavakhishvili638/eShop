@@ -3,10 +3,13 @@
   align-items: center;
   justify-content: space-between;
   color: #555843;
-  background-color: #fcf5ed;
+  /* background-color: #fcf5ed; */
+  background-color: #f5f5f5;
   padding: 1rem;
   /* position: fixed; */
   width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 .navbar-list {
@@ -17,4 +20,6 @@
 
 svg {
   color: #555843;
+  width: 20px;
+  height: 20px;
 }

@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import Auth from '../pages/Auth';
 import Checkout from '../pages/Checkout';
 import PurchasedItems from '../pages/PurchasedItems';
+import { PrivateRoute } from './PrivateRoute';
 
 
 
@@ -36,7 +37,9 @@ const router = createBrowserRouter([
         path: "/checkout",
         element: (
             <Layout>
-                <Checkout />
+                <PrivateRoute>
+                    <Checkout />
+                </PrivateRoute>
             </Layout>
         ),
     },
@@ -44,7 +47,9 @@ const router = createBrowserRouter([
         path: "/purchased-items",
         element: (
             <Layout>
-                <PurchasedItems />
+                <PrivateRoute>
+                    <PurchasedItems />
+                </PrivateRoute>
             </Layout>
         ),
     },

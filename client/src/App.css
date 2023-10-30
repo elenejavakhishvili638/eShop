@@ -1,9 +1,14 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 a {
   text-decoration: none;
   color: black;
+}
+
+body {
+  background-color: #6a9c899b;
 }
