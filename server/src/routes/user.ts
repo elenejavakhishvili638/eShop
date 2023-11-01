@@ -52,18 +52,17 @@ router.post("/login", async (req: Request, res: Response) => {
 
 export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization
-
     if (authHeader) {
         jwt.verify(authHeader, "secret", (error) => {
             if (error) {
                 return res.sendStatus(403)
             }
-
             next()
         })
+    } else {
+        res.sendStatus(401)
     }
 
-    res.sendStatus(401)
 }
 
 export { router as userRouter }

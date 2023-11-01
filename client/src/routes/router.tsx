@@ -3,7 +3,7 @@ import {
     createBrowserRouter,
     Navigate,
 } from "react-router-dom";
-import Home from "../pages/Home"
+import Shop from "../pages/Shop"
 import Layout from '../components/Layout';
 import Auth from '../pages/Auth';
 import Checkout from '../pages/Checkout';
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         path: "/",
         element: (
             <Layout>
-                <Home />
+                <Shop />
             </Layout>
         ),
     },

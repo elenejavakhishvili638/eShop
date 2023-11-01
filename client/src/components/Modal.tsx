@@ -3,7 +3,7 @@ import "./Modal.css"
 
 type Props = {
     text: string,
-    closeModal: () => void
+    closeModal?: () => void
 }
 
 const Modal = ({ text, closeModal }: Props) => {
