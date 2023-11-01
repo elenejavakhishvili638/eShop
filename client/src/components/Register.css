@@ -55,3 +55,8 @@ button:active {
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
 }
+
+span {
+  color: #176b87;
+  cursor: pointer;
+}

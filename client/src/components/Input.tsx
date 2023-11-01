@@ -13,7 +13,7 @@ const Input = ({ label, value, id, type, handleChange, name }: Props) => {
     return (
         <div className="input-wrapper">
             <label htmlFor={id}>{label}</label>
-            <input onChange={(e) => handleChange(e)} type={type} id={id} value={value} name={name} />
+            <input onChange={(e) => handleChange(e)} type={type} id={id} value={value} name={name} autoComplete="name" />
         </div>
     )
 }
