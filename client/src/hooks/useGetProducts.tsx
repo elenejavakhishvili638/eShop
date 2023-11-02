@@ -1,15 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { useGetToken } from "./useGetToken";
-
-export interface IProduct {
-    productName: string;
-    price: number;
-    description: string;
-    imageURL: string;
-    stockQuantity: number;
-}
-
+import { IProduct } from "../models/interfaces";
 
 export const useGetProducts = () => {
     const [products, setProducts] = useState<IProduct[]>()
@@ -27,6 +19,7 @@ export const useGetProducts = () => {
                 setLoading(false)
             } catch (error) {
                 setError("ERROR: Something went wrong")
+                setLoading(false)
             }
         }
 

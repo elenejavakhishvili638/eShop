@@ -1,4 +1,5 @@
 import Modal from "../components/Modal"
+import Product from "../components/Product"
 import { useGetProducts } from "../hooks/useGetProducts"
 import "./Shop.css"
 
@@ -15,19 +16,9 @@ const Shop = () => {
             {loading ? <Modal text="Please wait" /> : (
                 <div className="shop">
                     <div className="products">
-                        {products?.map((product, index) => {
+                        {products?.map((product) => {
                             return (
-                                <div key={index}>
-                                    <img src={product.imageURL} />
-                                    <div>
-                                        <h3>{product.productName}</h3>
-                                        <p>{product.description}</p>
-                                        <p>{product.price}</p>
-                                    </div>
-                                    <div>
-                                        <p>left - {product.stockQuantity}</p>
-                                    </div>
-                                </div>
+                                <Product product={product} key={product._id} />
                             )
                         })}
                     </div>
