@@ -50,6 +50,7 @@ router.post("/login", async (req: Request, res: Response) => {
     }
 })
 
+
 export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization
     if (authHeader) {
@@ -62,7 +63,19 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
     } else {
         res.sendStatus(401)
     }
-
 }
+
+router.get("/available-money/:userId", verifyToken, async (req: Request, res: Response) => {
+    const { userId } = req.params
+    try {
+        const user = await UserModel.findById(userId)
+        if (!user) {
+            res.status(400).json({ type: UserErrors.NO_USER_FOUND })
+        }
+        res.json({ availableMoney: user.availableMoney })
+    } catch (error) {
+        res.status(500).json({ error })
+    }
+})
 
 export { router as userRouter }

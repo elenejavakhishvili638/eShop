@@ -8,7 +8,7 @@ import { ShopContext, ShopContextI } from '../context/shop-context'
 
 const Navbar = () => {
 
-    const { getCartItems } = useContext<ShopContextI>(ShopContext)
+    const { getCartItems, availableMoney } = useContext<ShopContextI>(ShopContext)
 
     const count = getCartItems()
     return (
@@ -18,6 +18,7 @@ const Navbar = () => {
             </div>
             <div className='navbar-list'>
                 <Link title='Shop' to="/"><FcShop /></Link>
+                <p>{availableMoney.toFixed(2)}$</p>
                 <Link title='Purchased items' to="/purchased-items"><AiOutlineShoppingCart /></Link>
                 <div className='checkout'>
                     <Link title='Checkout' to="/checkout"><MdShoppingCartCheckout /></Link>

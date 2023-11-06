@@ -9,7 +9,7 @@ import Auth from '../pages/Auth';
 import Checkout from '../pages/Checkout';
 import PurchasedItems from '../pages/PurchasedItems';
 import { PrivateRoute } from './PrivateRoute';
-
+import { ShopContextProvider } from '../context/shop-context';
 
 
 export interface PrivateRouteProps {
@@ -20,39 +20,48 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: (
-            <Layout>
-                {/* <PrivateRoute>
+            <ShopContextProvider>
+                <Layout>
+                    {/* <PrivateRoute>
                 </PrivateRoute> */}
-                <Shop />
-            </Layout>
+                    <Shop />
+                </Layout>
+            </ShopContextProvider>
         ),
     },
     {
         path: "/auth",
         element: (
-            <Layout>
-                <Auth />
-            </Layout>
+            <ShopContextProvider>
+                <Layout>
+                    <Auth />
+                </Layout>
+            </ShopContextProvider>
         ),
     },
     {
         path: "/checkout",
         element: (
-            <Layout>
-                {/* <PrivateRoute>
+            <ShopContextProvider>
+
+                <Layout>
+                    {/* <PrivateRoute>
                 </PrivateRoute> */}
-                <Checkout />
-            </Layout>
+                    <Checkout />
+                </Layout>
+            </ShopContextProvider>
         ),
     },
     {
         path: "/purchased-items",
         element: (
-            <Layout>
-                {/* <PrivateRoute>
+            <ShopContextProvider>
+                <Layout>
+                    {/* <PrivateRoute>
                 </PrivateRoute> */}
-                <PurchasedItems />
-            </Layout>
+                    <PurchasedItems />
+                </Layout>
+            </ShopContextProvider>
         ),
     },
     {
