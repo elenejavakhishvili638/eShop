@@ -23,7 +23,9 @@ export const useGetProducts = () => {
             }
         }
 
-        fetchProducts()
+        if (localStorage.getItem("userId")) {
+            fetchProducts()
+        }
     }, [headers])
 
     return { products, error, setError, loading }

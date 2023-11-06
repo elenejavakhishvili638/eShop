@@ -22,9 +22,9 @@ const router = createBrowserRouter([
         element: (
             <ShopContextProvider>
                 <Layout>
-                    {/* <PrivateRoute>
-                </PrivateRoute> */}
-                    <Shop />
+                    <PrivateRoute>
+                        <Shop />
+                    </PrivateRoute>
                 </Layout>
             </ShopContextProvider>
         ),
@@ -45,9 +45,9 @@ const router = createBrowserRouter([
             <ShopContextProvider>
 
                 <Layout>
-                    {/* <PrivateRoute>
-                </PrivateRoute> */}
-                    <Checkout />
+                    <PrivateRoute>
+                        <Checkout />
+                    </PrivateRoute>
                 </Layout>
             </ShopContextProvider>
         ),

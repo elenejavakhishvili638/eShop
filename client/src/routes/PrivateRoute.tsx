@@ -5,9 +5,9 @@ export interface PrivateRouteProps {
 }
 
 export const PrivateRoute = ({ children }: PrivateRouteProps) => {
-    // if () {
-    //     return children
-    // }
+    if (localStorage.getItem("userId")) {
+        return children
+    }
 
     return <Navigate to="/auth" replace />
 }
