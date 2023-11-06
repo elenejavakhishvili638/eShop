@@ -3,18 +3,31 @@ import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai"
 import { MdShoppingCartCheckout } from "react-icons/md"
 import { FcShop } from "react-icons/fc"
 import "./Navbar.css"
+import { useContext } from 'react'
+import { ShopContext, ShopContextI } from '../context/shop-context'
 
 const Navbar = () => {
+
+    const { getCartItems } = useContext<ShopContextI>(ShopContext)
+
+    const count = getCartItems()
     return (
         <div className='navbar'>
             <div className='title'>
                 <h3>E-Shop</h3>
             </div>
             <div className='navbar-list'>
-                <Link to="/"><FcShop /></Link>
-                <Link to="/purchased-items"><AiOutlineShoppingCart /></Link>
-                <Link to="/checkout"><MdShoppingCartCheckout /></Link>
-                <Link to="/auth"><AiOutlineUser /></Link>
+                <Link title='Shop' to="/"><FcShop /></Link>
+                <Link title='Purchased items' to="/purchased-items"><AiOutlineShoppingCart /></Link>
+                <div className='checkout'>
+                    <Link title='Checkout' to="/checkout"><MdShoppingCartCheckout /></Link>
+                    <div className='count-wrapper'>
+                        <p>
+                            {count}
+                        </p>
+                    </div>
+                </div>
+                <Link title='Authenticate' to="/auth"><AiOutlineUser /></Link>
             </div>
         </div>
     )

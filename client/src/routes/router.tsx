@@ -21,6 +21,8 @@ const router = createBrowserRouter([
         path: "/",
         element: (
             <Layout>
+                {/* <PrivateRoute>
+                </PrivateRoute> */}
                 <Shop />
             </Layout>
         ),
@@ -37,9 +39,9 @@ const router = createBrowserRouter([
         path: "/checkout",
         element: (
             <Layout>
-                <PrivateRoute>
-                    <Checkout />
-                </PrivateRoute>
+                {/* <PrivateRoute>
+                </PrivateRoute> */}
+                <Checkout />
             </Layout>
         ),
     },
@@ -47,9 +49,9 @@ const router = createBrowserRouter([
         path: "/purchased-items",
         element: (
             <Layout>
-                <PrivateRoute>
-                    <PurchasedItems />
-                </PrivateRoute>
+                {/* <PrivateRoute>
+                </PrivateRoute> */}
+                <PurchasedItems />
             </Layout>
         ),
     },
