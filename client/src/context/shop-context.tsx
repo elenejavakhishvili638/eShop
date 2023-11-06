@@ -13,7 +13,8 @@ export interface ShopContextI {
     getCartItems: () => number,
     getTotalCartAmount: () => number,
     checkout: () => void,
-    availableMoney: number
+    availableMoney: number,
+    purchasedItems: IProduct[]
 }
 
 const ShopContext = createContext<ShopContextI>({
@@ -24,7 +25,8 @@ const ShopContext = createContext<ShopContextI>({
     getCartItems: () => 0,
     getTotalCartAmount: () => 0,
     checkout: () => { },
-    availableMoney: 0
+    availableMoney: 0,
+    purchasedItems: []
 })
 
 interface ShopContextProviderProps {
@@ -34,6 +36,8 @@ interface ShopContextProviderProps {
 const ShopContextProvider = ({ children }: ShopContextProviderProps) => {
     const [cartItems, setCartItems] = useState<Record<string, number> | Record<string, never>>({})
     const [availableMoney, setAvailableMoney] = useState<number>(0)
+    const [purchasedItems, setPurchasedItems] = useState<IProduct[]>([])
+
     const { products } = useGetProducts()
     const navigate = useNavigate()
     const { headers } = useGetToken()
@@ -48,8 +52,26 @@ const ShopContextProvider = ({ children }: ShopContextProviderProps) => {
     }, [headers])
 
     useEffect(() => {
-        fetchAvailableMoney()
+        if (localStorage.getItem("userId")) {
+            fetchAvailableMoney()
+        }
     }, [fetchAvailableMoney])
+
+
+    const fetchPurchsedItems = useCallback(async () => {
+        try {
+            const res = await axios.get(`http://localhost:3001/products/purchased-items/${localStorage.getItem("userId")}`, { headers })
+            setPurchasedItems(res.data.purchasedItems)
+        } catch (error) {
+            console.log(error)
+        }
+    }, [headers])
+
+    useEffect(() => {
+        if (localStorage.getItem("userId")) {
+            fetchPurchsedItems()
+        }
+    }, [fetchPurchsedItems])
 
     const getCartItemCount = (itemId: string) => {
         if (itemId in cartItems) {
@@ -104,6 +126,7 @@ const ShopContextProvider = ({ children }: ShopContextProviderProps) => {
             await axios.post("http://localhost:3001/products/checkout", body, { headers })
             setCartItems({})
             fetchAvailableMoney()
+            fetchPurchsedItems()
             navigate("/")
         } catch (error) {
             console.log(error)
@@ -111,7 +134,17 @@ const ShopContextProvider = ({ children }: ShopContextProviderProps) => {
     }
 
     return (
-        <ShopContext.Provider value={{ addToCart, removeFromCart, updateCartItemCount, getCartItemCount, getCartItems, getTotalCartAmount, checkout, availableMoney }}>
+        <ShopContext.Provider value={{
+            addToCart,
+            removeFromCart,
+            updateCartItemCount,
+            getCartItemCount,
+            getCartItems,
+            getTotalCartAmount,
+            checkout,
+            availableMoney,
+            purchasedItems
+        }}>
             {children}
         </ShopContext.Provider>
     )
