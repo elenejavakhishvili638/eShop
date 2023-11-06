@@ -60,7 +60,6 @@ button:disabled {
   cursor: not-allowed;
   opacity: 0.6;
   transform: none;
-  border-color: none;
   box-shadow: initial;
   color: initial;
 }
